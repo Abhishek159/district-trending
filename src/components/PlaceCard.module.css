@@ -1,0 +1,298 @@
+.card {
+  display: flex;
+  gap: 16px;
+  padding: 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  transition: border-color 0.15s ease, transform 0.15s ease;
+  position: relative;
+}
+
+.card:hover {
+  border-color: var(--text-subtle);
+  transform: translateY(-1px);
+}
+
+.card.match {
+  border-color: rgba(255, 87, 51, 0.25);
+}
+
+.rank {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-subtle);
+  min-width: 28px;
+  padding-top: 3px;
+  letter-spacing: 0.05em;
+}
+
+.body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+
+.top {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.nameRow {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.name {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.3px;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.price {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.type {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.distance {
+  font-size: 12px;
+  color: var(--text-subtle);
+}
+
+.distance::before {
+  content: '·';
+  margin-right: 8px;
+  color: var(--border);
+}
+
+.middle {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ratingRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.stars {
+  display: flex;
+  gap: 1px;
+  font-size: 13px;
+}
+
+.starFull {
+  color: var(--amber);
+}
+
+.starEmpty {
+  color: var(--text-subtle);
+}
+
+.ratingNum {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.reviewCount {
+  font-size: 12px;
+  color: var(--text-subtle);
+}
+
+.summary {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.videos {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  background: var(--surface-2);
+  border-radius: 10px;
+  margin-top: 4px;
+}
+
+.videosLabel {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.videoGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.videoCard {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.15s ease;
+}
+
+.videoCard:hover {
+  transform: translateY(-2px);
+}
+
+.videoCard:hover .videoOverlay {
+  opacity: 1;
+}
+
+.videoThumb {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  border-radius: 6px;
+  background: var(--surface);
+}
+
+.videoOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  border-radius: 6px;
+  height: 0;
+  padding-top: 56.25%;
+  top: 0;
+}
+
+.playIcon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 87, 51, 0.95);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  padding-left: 3px;
+}
+
+.videoTitle {
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  padding: 0 2px;
+}
+
+.viralBadge {
+  padding: 3px 10px;
+  background: linear-gradient(135deg, rgba(255, 87, 51, 0.15), rgba(255, 165, 0, 0.15));
+  color: #ff7a45;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border: 1px solid rgba(255, 87, 51, 0.2);
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.openBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  background: var(--green-soft);
+  color: var(--green);
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.openBadge::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  background: var(--green);
+  border-radius: 50%;
+}
+
+.closedBadge {
+  padding: 3px 10px;
+  background: rgba(239, 68, 68, 0.1);
+  color: #f87171;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.matchBadge {
+  padding: 3px 10px;
+  background: rgba(255, 87, 51, 0.1);
+  color: var(--tag-color, var(--accent));
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.scoreBadge {
+  padding: 3px 10px;
+  background: var(--surface-2);
+  color: var(--text-subtle);
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 500;
+  margin-left: auto;
+}

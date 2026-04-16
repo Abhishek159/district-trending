@@ -1,0 +1,29 @@
+# Dependencies — installed fresh on deploy
+node_modules/
+
+# Build output — Railway/Render rebuilds from source
+dist/
+
+# Secrets — API keys live in deploy env vars, not in repo
+.env
+*.local
+
+# Local logs + prewarm artefacts
+*.log
+
+# Stale prototype folders — not used by main app
+codex/
+codex-v2/
+
+# Local cache backups — production uses cache.json directly
+backups/
+
+# Editor + OS noise
+.DS_Store
+.vscode/
+.idea/
+
+# NOTE: cache.json IS committed intentionally.
+# It's the frozen snapshot (places + YouTube videos) that makes the site
+# serve identical data to everyone who opens the shared link — no live API
+# calls, no quota risk. TTLs are Infinity in server.js so data never expires.
