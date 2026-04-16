@@ -310,17 +310,17 @@ app.get('/api/places', async (req, res) => {
     return res.status(400).json({ error: 'Invalid or missing neighborhood' })
   }
 
-  if (!PLACES_API_KEY) {
-    return res.status(500).json({ error: 'Google Places API key not configured. Add GOOGLE_PLACES_API_KEY to your .env file.' })
-  }
-
   const { lat, lng, city } = NEIGHBORHOODS[neighborhood]
 
   try {
-    // ─── Places cache (7d TTL) ─────────────────────────────
+    // ─── Places cache (Infinity TTL in frozen mode) ────────
     let rawPlaces = cacheGet('places', neighborhood, PLACES_TTL_MS)
     let placesFetchedAt = cache.places?.[neighborhood]?.fetchedAt
     if (!rawPlaces) {
+      // Only need the API key if there's a genuine cache miss
+      if (!PLACES_API_KEY) {
+        return res.status(500).json({ error: 'Google Places API key not configured. Add GOOGLE_PLACES_API_KEY to your .env file.' })
+      }
       const response = await axios.post(
         'https://places.googleapis.com/v1/places:searchNearby',
         {
